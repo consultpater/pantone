@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
+/* ---------------------------------------------------------------
+   Pantone Gallery — editorial theme.
+   Warm paper background, tight radii, flat colors, print-y type.
+--------------------------------------------------------------- */
+@theme {
+  /* Paper + ink palette */
+  --color-paper: #fafaf7;
+  --color-paper-deep: #f2f1eb;
+  --color-card: #ffffff;
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #2a2a2a;
+  --color-muted: #6e6b63;
+  --color-muted-soft: #9b988f;
+  --color-rule: #e4e1d9;
+  --color-rule-soft: #ecebe4;
+  --color-contrast-dark: #1a1a1a;
+  --color-contrast-light: #faFaf7;
+
+  /* Hue-family accent shadows (used subtly in section headers) */
+  --color-family-red: #c74b4b;
+  --color-family-orange: #d98736;
+  --color-family-yellow: #d8b534;
+  --color-family-green: #4a8b3c;
+  --color-family-cyan: #3ca79b;
+  --color-family-blue: #345a8b;
+  --color-family-purple: #6b4e8b;
+  --color-family-pink: #c66191;
+  --color-family-neutral: #8a8478;
+  --color-family-black-white: #2a2a2a;
+
+  /* Type */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Editorial type scale */
+  --text-xxs: 0.625rem;
+  --text-xxs--line-height: 1rem;
+  --text-xs: 0.6875rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.8125rem;
+  --text-sm--line-height: 1.15rem;
+  --text-base: 0.9375rem;
+  --text-base--line-height: 1.4rem;
+  --text-lg: 1.0625rem;
+  --text-lg--line-height: 1.55rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.6rem;
+  --text-2xl: 1.6rem;
+  --text-2xl--line-height: 1.85rem;
+  --text-3xl: 2.25rem;
+  --text-3xl--line-height: 2.4rem;
+  --text-4xl: 3rem;
+  --text-4xl--line-height: 3.1rem;
+  --text-5xl: 4.25rem;
+  --text-5xl--line-height: 4.3rem;
+  --text-7xl: 5.75rem;
+  --text-7xl--line-height: 5.75rem;
+
+  /* Tight radii — print, not material */
+  --radius-xs: 1px;
+  --radius-sm: 2px;
+
+  /* Subtle elevation */
+  --shadow-card: 0 1px 0 rgba(26, 26, 26, 0.04), 0 1px 3px rgba(26, 26, 26, 0.06);
+  --shadow-hover: 0 2px 0 rgba(26, 26, 26, 0.05), 0 6px 18px rgba(26, 26, 26, 0.08);
+  --shadow-modal: 0 10px 40px rgba(26, 26, 26, 0.18), 0 2px 6px rgba(26, 26, 26, 0.08);
+}
+
+/* ---------- Base ---------- */
+html,
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv11", "ss01";
+}
+
+body {
+  min-height: 100vh;
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: #1a1a1a;
+  color: #fafaf7;
+}
+
+/* ---------- Mono helpers ---------- */
+.font-mono,
+code,
+kbd {
+  font-family: var(--font-mono);
+  font-feature-settings: "ss01", "cv01";
+}
+
+.mono-caps {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- Rule / hairline ---------- */
+.hairline {
+  border-top: 1px solid var(--color-rule);
+}
+
+.hairline-soft {
+  border-top: 1px solid var(--color-rule-soft);
+}
+
+/* ---------- Scrollbar (subtle editorial) ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(26, 26, 26, 0.14);
+  border-radius: 999px;
+  border: 2px solid var(--color-paper);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 26, 26, 0.22);
+}
+
+/* ---------- Focus ring (accessible + editorial) ---------- */
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+/* ---------- Keyboard chip ---------- */
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.25rem;
+  padding: 0 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-ink);
+  background: var(--color-paper-deep);
+  border: 1px solid var(--color-rule);
+  border-radius: 2px;
+  line-height: 1;
+}
+
+/* ---------- Motion respect ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
